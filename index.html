@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayushi's Valentine Wonderland 🍑💕</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Pacifico&family=Cherry+Bomb+One&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --peach-main: #FFCCB6;
+        --pink-accent: #FF92A9;
+        --soft-cream: #FFF5E1;
+      }
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        font-family: 'Quicksand', sans-serif;
+        overflow-x: hidden;
+        background-color: var(--soft-cream);
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='24'>❤️</text></svg>"), auto;
+        user-select: none;
+        scroll-behavior: smooth;
+      }
+      .font-pacifico { font-family: 'Pacifico', cursive; }
+      .font-cherry { font-family: 'Cherry Bomb One', cursive; }
+      
+      .bubbly-button {
+        transition: transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6), box-shadow 0.3s ease, background-color 0.2s ease;
+      }
+      .bubbly-button:hover { transform: scale(1.05) rotate(1deg); }
+      .bubbly-button:active { transform: scale(0.95) rotate(-1deg); }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px rgba(255, 146, 169, 0.15);
+      }
+
+      @keyframes wobble {
+        0%, 100% { transform: scale(1) rotate(0); }
+        25% { transform: scale(1.05) rotate(3deg); }
+        75% { transform: scale(0.98) rotate(-3deg); }
+      }
+      .animate-wobble { animation: wobble 2s infinite ease-in-out; }
+
+      @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+
+      .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        z-index: 9999;
+        pointer-events: none;
+      }
+
+      @keyframes confetti-fall {
+        0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      }
+
+      canvas { touch-action: none; }
+      
+      .music-spin { animation: spin 5s linear infinite; }
+      @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      .pause-animation { animation-play-state: paused; }
+
+      .rainbow-border {
+        position: relative;
+        padding: 4px;
+        background: linear-gradient(45deg, #ff92a9, #ffccb6, #f3b0c3, #ffd1dc);
+        background-size: 400% 400%;
+        animation: gradient-flow 8s ease infinite;
+      }
+      @keyframes gradient-flow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4"
+      }
+    }
+    </script>
+    <script>
+      window.spawnConfetti = function() {
+        const colors = ['#FFC0CB', '#FF69B4', '#FFB6C1', '#DB7093', '#FFD1DC', '#FFCCB6', '#FFD700', '#FFFFFF'];
+        for (let i = 0; i < 80; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = Math.random() * 8 + 6 + 'px';
+          confetti.style.height = confetti.style.width;
+          confetti.style.borderRadius = i % 2 === 0 ? '50%' : '2px';
+          confetti.style.animation = `confetti-fall ${Math.random() * 2 + 2}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 4000);
+        }
+      }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="selection:bg-pink-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
