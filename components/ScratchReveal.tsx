@@ -100,7 +100,7 @@ const ScratchReveal: React.FC<ScratchRevealProps> = ({ imageUrl, width, height, 
         onError={(e) => {
           console.error("Image failed to load:", imageUrl);
           // Fallback if image fails
-          e.currentTarget.src = "https://res.cloudinary.com/dg33y9bsn/image/upload/v1770436873/img1_y0mw1d.jpg";
+          e.currentTarget.src = "https://res.cloudinary.com/dg33y9bsn/image/upload/v1770517487/img2_zye3gu.jpg";
         }}
       />
       <canvas
